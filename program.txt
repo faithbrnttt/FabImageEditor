@@ -1,0 +1,252 @@
+from PIL import Image, ImageEnhance, ImageFilter
+import uuid
+
+choice = ''
+
+# brighten or darken an image
+def brighten():
+    userImg = input("Please select an image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    brighten = ImageEnhance.Brightness(im1)
+    intensity = float(input("Please select a value greater than 1 to brighten: "))
+    im3 = brighten.enhance(intensity)
+    im3.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+# blend 2 images to make 1 new image
+def blender():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    newim1 = im1.resize((1080, 1080))
+    newimc = newim1.convert('RGB')
+    newimc.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+    userImg2 = input("Please select your second image path: \n")
+    im2 = Image.open(userImg2)
+    newim2 = im2.resize((1080, 1080))
+    newimcc = newim2.convert('RGB')
+    newimcc.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+    blend = Image.blend(newimc, newimcc, 2.5)
+    blend.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#adjust the blur of an image
+def blur():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    im2 = im1.filter(ImageFilter.BLUR)
+    intensity = int(input("Please select a value greater than 1 to increase blur intensity: "))
+    im3 = im2.filter(ImageFilter.MinFilter(intensity))
+    im3.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#box blur
+def bblur():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    radius = int(input("Please select a value greater than 1 to increase blur radius: "))
+    im2 = im1.filter(ImageFilter.BoxBlur(radius))
+    im2.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#gaussian blur
+def gblur():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    radius = int(input("Please select a value greater than 1 to increase blur radius: "))
+    im2 = im1.filter(ImageFilter.GaussianBlur(radius))
+    im2.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#adjust the contrast of an image
+def contrast():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    contrast = ImageEnhance.Contrast(im1)
+    intensity = float(input("Please select a value greater than 1 to increase contrast: "))
+    im3 = contrast.enhance(intensity)
+    im3.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#adjust the sharpness of an image
+def sharpen():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    sharpen = ImageEnhance.Sharpness(im1)
+    intensity = float(input("Please select a value greater than 1 to increase sharpness: "))
+    im3 = sharpen.enhance(intensity)
+    im3.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#adjust the color balance of an image
+def balance():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    bal = ImageEnhance.Color(im1)
+    intensity = float(input("Please select a value greater than 1 to increase color balance: "))
+    im3 = bal.enhance(intensity)
+    im3.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#contours an image
+def contour():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    im2 = im1.filter(ImageFilter.CONTOUR)
+    im2.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#enhances detail of an image
+def detail():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    im2 = im1.filter(ImageFilter.DETAIL)
+    im2.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#enhances the edges of an image
+def edge_enhance():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    im2 = im1.filter(ImageFilter.EDGE_ENHANCE)
+    im2.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#enhances edges of an image more
+def edge_enhance_plus():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    im2 = im1.filter(ImageFilter.EDGE_ENHANCE_MORE)
+    im2.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#applies embossing to an image
+def emboss():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    im2 = im1.filter(ImageFilter.EMBOSS)
+    im2.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#enhances the smoothness of an image
+def smooth():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    im2 = im1.filter(ImageFilter.SMOOTH)
+    im2.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+#enhances the smoothness of an image more
+def smooth_plus():
+    userImg = input("Please select image path ex.Images/imagename.jpg: \n")
+    im1 = Image.open(userImg)
+    im2 = im1.filter(ImageFilter.SMOOTH_MORE)
+    im2.save(f"Images/{str(uuid.uuid4().hex)}.jpg")
+
+# menu of filters including blurs-boxblur, gaussianblur, contour, detail, edge_enhance, emboss, sharpen, smooth, and blend
+def filters():
+    while True:
+        print("1. Blur")
+        print("2. Contour")
+        print("3. Detail")
+        print("4. Edge Enhance")
+        print("5. Emboss")
+        print("6. Sharpen")
+        print("7. Smooth")
+        print("8. Quit")
+        print("\n")
+        choice = input("Please select an option: ")
+        choice = choice.strip()
+        print("-----------------\n")
+
+        if (choice == "1"):
+            while True:
+                print("1. Blur")
+                print("2. Box Blur")
+                print("3. Gaussian Blur")
+                print("4. Quit")
+                print("\n")
+                choice = input("PLease select an option:")
+                choice = choice.strip()
+                print("-----------------\n")
+
+                if (choice == "1"):
+                    blur()
+                elif (choice == "2"):
+                    bblur()
+                elif (choice == "3"):
+                    gblur()
+                elif (choice == "4"):
+                    break
+                else:
+                    print("Invalid option...")
+        elif (choice == "2"):
+            contour()
+        elif (choice == "3"):
+            detail()
+        elif (choice == "4"):
+            while True:
+                print("1. Edge Enhance")
+                print("2. Edge Enhance Plus")
+                print("3. Quit")
+
+                choice = input("PLease select an option:")
+                choice = choice.strip()
+
+                if (choice == "1"):
+                    edge_enhance()
+                elif (choice == "2"):
+                    edge_enhance_plus()
+                elif (choice == "3"):
+                    break
+                else:
+                    print("Invalid option...")
+        elif (choice == "5"):
+            emboss()
+        elif (choice == "6"):
+            sharpen()
+        elif (choice == "7"):
+            while True:
+                print("1. Smooth")
+                print("2. Smooth More")
+                print("3. Quit")
+
+                choice = input("PLease select an option:")
+                choice = choice.strip()
+
+                if (choice == "1"):
+                    smooth()
+                elif (choice == "2"):
+                    smooth_plus()
+                elif (choice == "3"):
+                    break
+                else:
+                    print("Invalid option...")
+        elif (choice == "8"):
+            break
+        else:
+            print("Invalid option...")
+
+#main menu displaying editing options for images
+def menu():
+    while True:
+        print("1. Brightness")
+        print("2. Contrast")
+        print("3. Balance")
+        print("4. Filters")
+        print("5. Blender")
+        print("6. Quit")
+        print("\n")
+        choice = input("Please select an option: ")
+        choice = choice.strip()
+        print("-----------------\n")
+
+        if (choice == "1"):
+            brighten()
+        elif (choice == "2"):
+            contrast()
+        elif (choice == "3"):
+            balance()
+        elif (choice == "4"):
+            filters()
+        elif (choice == "5"):
+            blender()
+        elif (choice == "6"):
+            break
+        else:
+            print("Invalid option...")
+
+if __name__=="__main__":
+
+    print("\nFAB Image Editing")
+    print("-----------------\n")
+
+    print("To start,\nmake sure the images you wish to edit are located in the Images folder provided.\n")
+
+    menu()
+    

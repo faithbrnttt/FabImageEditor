@@ -1,0 +1,430 @@
+{% extends 'base/index.html' %}
+
+{% block content %}
+    <div id="wrapper">
+        <div class="ud-btn">
+            <a class="update-photo" href="{% url 'update' photo.id %}">
+                <i class="fa-solid fa-pen"></i>
+            </a>
+            <a class="delete-photo" href="{% url 'delete' photo.id %}">
+                <i class="fa-solid fa-trash"></i>
+            </a>
+        </div>
+        <canvas class="canvas" id="canvas"></canvas>
+        <div class="filters">
+            <div class="brightness">
+                <button class="filter-btn brightness-remove">
+                    <i class="filter-btn brightness-remove fa-solid fa-minus"></i>
+                </button>
+                <button class="mid-btn"disabled>
+                    Brightness
+                </button>
+                <button class="filter-btn brightness-add">
+                    <i class="filter-btn brightness-add fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="contrast">
+                <button class="filter-btn contrast-remove">
+                    <i class="filter-btn contrast-remove fa-solid fa-minus"></i>
+                </button>
+                <button class="mid-btn"disabled>
+                    Contrast
+                </button>
+                <button class="filter-btn contrast-add">
+                    <i class="filter-btn contrast-add fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="saturation">
+                <button class="filter-btn saturation-remove">
+                    <i class="filter-btn saturation-remove fa-solid fa-minus"></i>
+                </button>
+                <button class="mid-btn"disabled>
+                    Saturation
+                </button>
+                <button class="filter-btn saturation-add">
+                    <i class="filter-btn saturation-add fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="vibrance">
+                <button class="filter-btn vibrance-remove">
+                    <i class="filter-btn vibrance-remove fa-solid fa-minus"></i>
+                </button>
+                <button class="mid-btn"disabled>
+                    Vibrance
+                </button>
+                <button class="filter-btn vibrance-add">
+                    <i class="filter-btn vibrance-add fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="hue">
+                <button class="filter-btn hue-remove">
+                    <i class="filter-btn hue-remove fa-solid fa-minus"></i>
+                </button>
+                <button class="mid-btn"disabled>
+                    Hue
+                </button>
+                <button class="filter-btn hue-add">
+                    <i class="filter-btn hue-add fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="gamma">
+                <button class="mid-btn"disabled>
+                    Gamma
+                </button>
+                <button class="filter-btn gamma-add">
+                    <i class="filter-btn gamma-add fa-solid fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="filters2">
+            <div class="stack">
+                <button class="mid-btn"disabled>
+                    Stack Blur
+                </button>
+                <button class="filter-btn stackblur-add">
+                    <i class="filter-btn stackblur-add fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="exposure">
+                <button class="filter-btn exposure-remove">
+                    <i class="filter-btn exposure-remove fa-solid fa-minus"></i>
+                </button>
+                <button class="mid-btn"disabled>
+                    Exposure
+                </button>
+                <button class="filter-btn exposure-add">
+                    <i class="filter-btn exposure-add fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="sepia">
+                <button class="filter-btn sepia-remove">
+                    <i class="filter-btn sepia-remove fa-solid fa-minus"></i>
+                </button>
+                <button class="mid-btn"disabled>
+                    Sepia
+                </button>
+                <button class="filter-btn sepia-add">
+                    <i class="filter-btn sepia-add fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="noise">
+                <button class="filter-btn noise-remove">
+                    <i class="filter-btn noise-remove fa-solid fa-minus"></i>
+                </button>
+                <button class="mid-btn"disabled>
+                    Noise
+                </button>
+                <button class="filter-btn noise-add">
+                    <i class="filter-btn noise-add fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="sharpen">
+                <button class="filter-btn sharpen-remove">
+                    <i class="filter-btn sharpen-remove fa-solid fa-minus"></i>
+                </button>
+                <button class="mid-btn"disabled>
+                    Sharpen
+                </button>
+                <button class="filter-btn sharpen-add">
+                    <i class="filter-btn sharpen-add fa-solid fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="effects">
+            <div class="e1">
+                <button class="filter-btn vintage-add">Vintage</button>
+            </div>
+            <div class="e2">
+                <button class="filter-btn lomo-add">Lomo</button>
+            </div>
+            <div class="e3">
+                <button class="filter-btn clarity-add">Clarity</button>
+            </div>
+            <div class="e4">
+                <button class="filter-btn sincity-add">Sin City</button>
+            </div>
+            <div class="e5">
+                <button class="filter-btn glowingsun-add">Glowing Sun</button>
+            </div>
+            <div class="e6">
+                <button class="filter-btn hazydays-add">Hazy Days</button>
+            </div>
+        </div>
+
+        <div class="effects2">
+            <div class="e7">
+                <button class="filter-btn hemingway-add">Hemingway</button>
+            </div>
+            <div class="e8">
+                <button class="filter-btn concentrate-add">Concentrate</button>
+            </div>
+            <div class="e9">
+                <button class="filter-btn crossprocess-add">Cross Process</button>
+            </div>
+            <div class="e10">
+                <button class="filter-btn pinhole-add">Pinhole</button>
+            </div>
+            <div class="e11">
+                <button class="filter-btn nostalgia-add">Nostalgia</button>
+            </div>
+            <div class="e12">
+                <button class="filter-btn hermajesty-add">Her Majesty</button>
+            </div>
+        </div>
+
+        <div class="effects3">
+            <div class="e13">
+                <button class="filter-btn sunrise-add">Sunrise</button>
+            </div>
+            <div class="e14">
+                <button class="filter-btn orangepeel-add">Orange Peel</button>
+            </div>
+            <div class="e15">
+                <button class="filter-btn love-add">Love</button>
+            </div>
+            <div class="e16">
+                <button class="filter-btn grungy-add">Grungy</button>
+            </div>
+            <div class="e17">
+                <button class="filter-btn jarques-add">Jarques</button>
+            </div>
+            <div class="e18">
+                <button class="filter-btn oldboot-add">Old Boot</button>
+            </div>
+        </div>
+
+        <div class="end-opt">
+            <div class="down">
+                <button id="download-btn" class="btn">
+                    <i class="download-btn fa-solid fa-download fa-xl"></i>
+                </button>
+            </div>
+            <div class="clear">
+                <button id="revert-btn" class="clear-btn">
+                    Clear
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const photo = "{{photo.img.url}}";
+        const fileName = "{{img}}";
+        const downloadBtn = document.getElementById('download-btn');
+        const revertBtn = document.getElementById('revert-btn');
+
+        document.addEventListener('click', (e) =>{
+            if(e.target.classList.contains('filter-btn')) {
+                if(e.target.classList.contains('brightness-add')){
+                    Caman('#canvas', img, function(){
+                        this.brightness(5).render();
+                    });
+                } else if (e.target.classList.contains('brightness-remove')){
+                    Caman('#canvas', img, function(){
+                        this.brightness(-5).render();
+                    });
+                } else if (e.target.classList.contains('contrast-add')){
+                    Caman('#canvas', img, function(){
+                        this.contrast(5).render();
+                    });
+                } else if (e.target.classList.contains('contrast-remove')){
+                    Caman('#canvas', img, function(){
+                        this.contrast(-5).render();
+                    });
+                } else if (e.target.classList.contains('saturation-add')){
+                    Caman('#canvas', img, function(){
+                        this.saturation(5).render();
+                    });
+                } else if (e.target.classList.contains('saturation-remove')){
+                    Caman('#canvas', img, function(){
+                        this.saturation(-5).render();
+                    });
+                } else if (e.target.classList.contains('vibrance-add')){
+                    Caman('#canvas', img, function(){
+                        this.vibrance(5).render();
+                    });
+                } else if (e.target.classList.contains('vibrance-remove')){
+                    Caman('#canvas', img, function(){
+                        this.vibrance(-5).render();
+                    });
+                } else if (e.target.classList.contains('hue-add')){
+                    Caman('#canvas', img, function(){
+                        this.hue(5).render();
+                    });
+                } else if (e.target.classList.contains('hue-remove')){
+                    Caman('#canvas', img, function(){
+                        this.hue(-5).render();
+                    });
+                } else if (e.target.classList.contains('gamma-add')){
+                    Caman('#canvas', img, function(){
+                        this.gamma(5).render();
+                    });
+                } else if (e.target.classList.contains('stackblur-add')){
+                    Caman('#canvas', img, function(){
+                        this.stackBlur(5).render();
+                    });
+                } else if (e.target.classList.contains('exposure-add')){
+                    Caman('#canvas', img, function(){
+                        this.exposure(5).render();
+                    });
+                } else if (e.target.classList.contains('exposure-remove')){
+                    Caman('#canvas', img, function(){
+                        this.exposure(-5).render();
+                    });
+                } else if (e.target.classList.contains('sepia-add')){
+                    Caman('#canvas', img, function(){
+                        this.sepia(5).render();
+                    });
+                } else if (e.target.classList.contains('sepia-remove')){
+                    Caman('#canvas', img, function(){
+                        this.sepia(-5).render();
+                    });
+                } else if (e.target.classList.contains('noise-add')){
+                    Caman('#canvas', img, function(){
+                        this.noise(5).render();
+                    });
+                } else if (e.target.classList.contains('noise-remove')){
+                    Caman('#canvas', img, function(){
+                        this.noise(-5).render();
+                    });
+                } else if (e.target.classList.contains('sharpen-add')){
+                    Caman('#canvas', img, function(){
+                        this.sharpen(5).render();
+                    });
+                } else if (e.target.classList.contains('sharpen-remove')){
+                    Caman('#canvas', img, function(){
+                        this.sharpen(-5).render();
+                    });
+                } else if (e.target.classList.contains('vintage-add')){
+                    Caman('#canvas', img, function(){
+                        this.vintage().render();
+                    });
+                } else if (e.target.classList.contains('lomo-add')){
+                    Caman('#canvas', img, function(){
+                        this.lomo().render();
+                    });
+                } else if (e.target.classList.contains('clarity-add')){
+                    Caman('#canvas', img, function(){
+                        this.clarity().render();
+                    });
+                } else if (e.target.classList.contains('sincity-add')){
+                    Caman('#canvas', img, function(){
+                        this.sinCity().render();
+                    });
+                } else if (e.target.classList.contains('crossprocess-add')){
+                    Caman('#canvas', img, function(){
+                        this.crossProcess().render();
+                    });
+                } else if (e.target.classList.contains('pinhole-add')){
+                    Caman('#canvas', img, function(){
+                        this.pinhole().render();
+                    });
+                } else if (e.target.classList.contains('nostalgia-add')){
+                    Caman('#canvas', img, function(){
+                        this.nostalgia().render();
+                    });
+                } else if (e.target.classList.contains('hermajesty-add')){
+                    Caman('#canvas', img, function(){
+                        this.herMajesty().render();
+                    });
+                } else if (e.target.classList.contains('sunrise-add')){
+                    Caman('#canvas', img, function(){
+                        this.sunrise().render();
+                    });
+                } else if (e.target.classList.contains('orangepeel-add')){
+                    Caman('#canvas', img, function(){
+                        this.orangePeel().render();
+                    });
+                } else if (e.target.classList.contains('love-add')){
+                    Caman('#canvas', img, function(){
+                        this.love().render();
+                    });
+                } else if (e.target.classList.contains('grungy-add')){
+                    Caman('#canvas', img, function(){
+                        this.grungy().render();
+                    });
+                } else if (e.target.classList.contains('jarques-add')){
+                    Caman('#canvas', img, function(){
+                        this.jarques().render();
+                    });
+                } else if (e.target.classList.contains('oldboot-add')){
+                    Caman('#canvas', img, function(){
+                        this.oldBoot().render();
+                    });
+                } else if (e.target.classList.contains('glowingsun-add')){
+                    Caman('#canvas', img, function(){
+                        this.glowingSun().render();
+                    });
+                } else if (e.target.classList.contains('hazydays-add')){
+                    Caman('#canvas', img, function(){
+                        this.hazyDays().render();
+                    });
+                } else if (e.target.classList.contains('hemingway-add')){
+                    Caman('#canvas', img, function(){
+                        this.hemingway().render();
+                    });
+                } else if (e.target.classList.contains('concentrate-add')){
+                    Caman('#canvas', img, function(){
+                        this.concentrate().render();
+                    });
+                }
+            }
+        });
+
+        revertBtn.addEventListener('click', (e) => {
+            Caman('#canvas', img, function(){
+                this.revert();
+            });
+        });
+        
+        let img = new Image();
+        img.src = photo;
+
+        img.addEventListener("load", function(){
+            if(img.width>img.height){
+                canvas.width = 800;
+                canvas.height = 800 / img.width * img.height;
+            } else {
+                canvas.width = 500 / img.height * img.width;
+                canvas.height = 500;
+            }    
+        
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        });
+
+        downloadBtn.addEventListener('click', (e) => {
+            const fileExtension = fileName.slice(-4);
+
+            let newFile;
+            if(fileExtension === '.jpg' || fileExtension === '.png') {
+                newFile = fileName.substring(0, fileName.length - 4) + '-edited.jpg';
+            }
+
+            download(canvas, newFile);
+        });
+
+        function download(canvas, fileName) {
+            let e;
+
+            const link = document.createElement('a');
+
+            link.href = canvas.toDataURL('image/jpeg', 0.8);
+            link.download = fileName;
+
+            e = new MouseEvent('click');
+
+            link.dispatchEvent(e);
+        }
+    </script>
+{% endblock %}
+

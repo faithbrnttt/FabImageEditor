@@ -1,0 +1,17 @@
+{% extends 'base/index.html' %}
+
+{% block content %}
+
+    <form class="delete-form" method="POST">
+        {% csrf_token %}
+        <div class="dbf">
+            <p class="aregg">Are you sure you want to delete your photo?</p>
+            <div class="bgroup">
+                <input class="dbtn" type="submit" value="Delete">
+                <a href="{% url 'photo' photo.id %}">
+                    <input class="cncl" type="button" value="Cancel">
+                </a>
+            </div>
+        </div>
+    </form>
+{% endblock content %}
