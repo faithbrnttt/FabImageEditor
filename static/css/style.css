@@ -154,7 +154,7 @@ i:hover {
 .sepia,
 .noise,
 .sharpen {
-    background-color: darkblue;
+    border: 1px solid white;
     border-radius: 25px;
     margin: 0 auto;
     
