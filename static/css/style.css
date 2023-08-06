@@ -351,12 +351,12 @@ i:hover {
 }
 
 .areg {
-    margin-left: 500px;
+    margin-left: 550px;
     margin-top: 40px;
 }
 
 .areg a {
-    margin-left: 40px;  
+    margin-left: 20px;
 }
 
 .photo-form,
@@ -366,6 +366,10 @@ i:hover {
     margin-left: 30%;
     margin-right: 30%;
     margin-top: 6%;
+}
+
+.reg-form small {
+    display: none;
 }
 
 .submit-photo,

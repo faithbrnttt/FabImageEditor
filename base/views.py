@@ -21,7 +21,7 @@ class AccountRegister(FormView):
     form_class = UserCreationForm
     redirect_authenticated_user = True
     success_url = reverse_lazy('photos')
-
+    
 
     def form_valid(self,form):
         user = form.save()
